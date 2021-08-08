@@ -1,5 +1,5 @@
 package com.dev.wendyyanto.personalweb.model.response
 
-class ProfileResponse(
+data class ProfileResponse(
     val name: String
 )
