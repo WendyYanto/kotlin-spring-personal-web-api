@@ -8,22 +8,27 @@ import org.springframework.data.mongodb.core.mapping.Field
 data class Profile(
     @Id
     val id: String,
-    val name: String? = null,
-    val description: String? = null,
-    val fullDescription: String? = null,
-    val profileImageUrl: String? = null,
-    val contact: Contact? = null)
+
+    var name: String? = null,
+
+    var description: String? = null,
+
+    var fullDescription: String? = null,
+
+    var profileImageUrl: String? = null,
+
+    var contact: Contact? = null)
 
 data class Contact(
     @Field("email")
-    val email: String? = null,
+    var email: String? = null,
 
     @Field("instagram")
-    val instagramLink: String? = null,
+    var instagramLink: String? = null,
 
     @Field("linkedin")
-    val linkedinLink: String? = null,
+    var linkedinLink: String? = null,
 
     @Field("github")
-    val githubLink: String? = null
+    var githubLink: String? = null
 )
