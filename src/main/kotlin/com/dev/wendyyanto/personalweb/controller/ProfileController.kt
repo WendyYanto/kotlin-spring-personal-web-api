@@ -23,6 +23,8 @@ class ProfileController constructor(@Autowired private val profileService: Profi
 
   @PutMapping("/profile")
   fun updateProfile(@RequestBody updateProfileRequest: UpdateProfileRequest): ProfileResponse {
+    profileHelper.validateUpdateProfileRequest(updateProfileRequest)
+
     return profileHelper.toProfileResponse(
         profileService.updateProfile(updateProfileRequest)
     )

@@ -2,6 +2,7 @@ package com.dev.wendyyanto.personalweb.advice
 
 import com.dev.wendyyanto.personalweb.constant.ErrorCode
 import com.dev.wendyyanto.personalweb.exception.DataNotFoundException
+import com.dev.wendyyanto.personalweb.exception.ValidationException
 import com.dev.wendyyanto.personalweb.model.response.ErrorResponse
 import com.mongodb.MongoCommandException
 import org.springframework.http.ResponseEntity
@@ -23,6 +24,17 @@ class ControllerAdvice {
 
   @ExceptionHandler(DataNotFoundException::class)
   fun constructDataNotFoundExceptionResponse(exception: DataNotFoundException): ResponseEntity<ErrorResponse> {
+    val errorCode = exception.errorCode
+    return ResponseEntity
+        .status(errorCode.httpStatus)
+        .body(ErrorResponse(
+            code = errorCode.code,
+            message = errorCode.message
+        ))
+  }
+
+  @ExceptionHandler(ValidationException::class)
+  fun constructValidationExceptionResponse(exception: ValidationException): ResponseEntity<ErrorResponse> {
     val errorCode = exception.errorCode
     return ResponseEntity
         .status(errorCode.httpStatus)

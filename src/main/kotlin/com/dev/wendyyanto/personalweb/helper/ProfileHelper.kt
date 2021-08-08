@@ -6,10 +6,11 @@ import com.dev.wendyyanto.personalweb.model.request.ContactRequest
 import com.dev.wendyyanto.personalweb.model.request.UpdateProfileRequest
 import com.dev.wendyyanto.personalweb.model.response.ContactResponse
 import com.dev.wendyyanto.personalweb.model.response.ProfileResponse
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class ProfileHelper {
+class ProfileHelper constructor(@Autowired private val urlValidator: UrlValidator) {
 
   fun toProfileResponse(profile: Profile): ProfileResponse {
     return ProfileResponse(
@@ -55,5 +56,13 @@ class ProfileHelper {
     } ?: run {
       return null
     }
+  }
+
+  fun validateUpdateProfileRequest(updateProfileRequest: UpdateProfileRequest) {
+    urlValidator.validateImageUrl(updateProfileRequest.profileImageUrl)
+
+    urlValidator.validateUrl(updateProfileRequest.contact?.linkedinLink)
+    urlValidator.validateUrl(updateProfileRequest.contact?.instagramLink)
+    urlValidator.validateUrl(updateProfileRequest.contact?.githubLink)
   }
 }
