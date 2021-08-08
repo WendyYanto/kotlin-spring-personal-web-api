@@ -25,9 +25,8 @@ class ProfileServiceImpl constructor(
   }
 
   override fun updateProfile(updateProfileRequest: UpdateProfileRequest): Profile {
-    val profile = profileRepository.findById(MY_ID)
-        .orElseThrow { DataNotFoundException(ErrorCode.PROFILE_NOT_FOUND) }
-
-    return profileRepository.save(profileHelper.updateToProfile(profile, updateProfileRequest))
+    return profileRepository.save(
+        profileHelper.updateToProfile(
+            getProfile(), updateProfileRequest))
   }
 }
