@@ -9,7 +9,7 @@ enum class ErrorCode(val code: String, val message: String,
 
   PROFILE_NOT_FOUND("PROFILE_NOT_FOUND", "Cannot find profile", HttpStatus.NOT_FOUND.value()),
 
-  IMAGE_LINK_MUST_HAS_VALID_PREFIX("IMAGE_LINK_MUST_HAS_VALID_PREFIX", "Image link should starts with https or http",
+  LINK_MUST_HAS_VALID_PREFIX("LINK_MUST_HAS_VALID_PREFIX", "link should starts with https or http",
       HttpStatus.BAD_REQUEST.value()),
 
   IMAGE_LINK_MUST_HAS_VALID_EXTENSION("IMAGE_LINK_MUST_HAS_VALID_EXTENSION",

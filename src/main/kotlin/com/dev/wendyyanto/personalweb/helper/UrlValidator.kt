@@ -38,7 +38,7 @@ class UrlValidator {
     }
 
     if (urlPrefixes.none { prefix -> url.startsWith(prefix, ignoreCase = true) }) {
-      throw ValidationException(ErrorCode.IMAGE_LINK_MUST_HAS_VALID_PREFIX)
+      throw ValidationException(ErrorCode.LINK_MUST_HAS_VALID_PREFIX)
     }
   }
 }
