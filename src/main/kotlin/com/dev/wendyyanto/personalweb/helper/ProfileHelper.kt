@@ -7,9 +7,9 @@ import com.dev.wendyyanto.personalweb.model.request.UpdateProfileRequest
 import com.dev.wendyyanto.personalweb.model.response.ContactResponse
 import com.dev.wendyyanto.personalweb.model.response.ProfileResponse
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Component
 
-@Service
+@Component
 class ProfileHelper constructor(@Autowired private val urlValidator: UrlValidator) {
 
   fun toProfileResponse(profile: Profile): ProfileResponse {
