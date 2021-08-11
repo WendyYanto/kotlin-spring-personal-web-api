@@ -15,4 +15,12 @@ enum class ErrorCode(val code: String, val message: String,
   IMAGE_LINK_MUST_HAS_VALID_EXTENSION("IMAGE_LINK_MUST_HAS_VALID_EXTENSION",
       "Image link should have jpg, jpeg, png and svg image extension",
       HttpStatus.BAD_REQUEST.value()),
+
+  SKILL_NAME_SHOULD_NOT_BE_EMPTY_OR_NULL("SKILL_NAME_SHOULD_NOT_BE_EMPTY_OR_NULL",
+      "Skill name should not be empty or null",
+      HttpStatus.BAD_REQUEST.value()),
+
+  SKILL_RATING_INVALID_REQUEST("SKILL_RATING_INVALID_REQUEST",
+      "Skill rating should be between 0 - 100",
+      HttpStatus.BAD_REQUEST.value()),
 }
