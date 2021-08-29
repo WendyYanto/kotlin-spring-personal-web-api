@@ -6,10 +6,8 @@ import com.dev.wendyyanto.personalweb.model.outbound.medium.MediumArticleOutboun
 import com.dev.wendyyanto.personalweb.outbound.medium.MediumOutbound
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
-import org.springframework.web.client.RestClientException
 import org.springframework.web.client.RestTemplate
 import org.springframework.web.util.UriComponentsBuilder
-import java.util.*
 
 @Component
 class MediumOutboundImpl constructor(
@@ -29,12 +27,8 @@ class MediumOutboundImpl constructor(
         .toUri()
 
     return try {
-      Optional.ofNullable(
-      restTemplate.getForEntity(uri, MediumArticleOutboundResponse::class.java).body)
-      .orElseThrow {
-        DataNotFoundException(ErrorCode.MEDIUM_ARTICLES_NOT_FOUND)
-      }
-    } catch (restClientException: RestClientException) {
+      restTemplate.getForEntity(uri, MediumArticleOutboundResponse::class.java).body!!
+    } catch (exception: Exception) {
       throw DataNotFoundException(ErrorCode.MEDIUM_ARTICLES_NOT_FOUND)
     }
   }
