@@ -23,4 +23,8 @@ enum class ErrorCode(val code: String, val message: String,
   SKILL_RATING_INVALID_REQUEST("SKILL_RATING_INVALID_REQUEST",
       "Skill rating should be between 0 - 100",
       HttpStatus.BAD_REQUEST.value()),
+
+  MEDIUM_ARTICLES_NOT_FOUND("MEDIUM_ARTICLES_NOT_FOUND",
+      "Failed to get medium articles",
+      HttpStatus.NOT_FOUND.value()),
 }
